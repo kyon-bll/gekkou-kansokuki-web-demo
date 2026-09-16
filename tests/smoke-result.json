@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "version": "0.2.0",
+  "browser": "144.0.7559.96",
+  "mode": "unchanged index.html via page.set_content",
+  "checks": [
+    "Title → ADV → mantis → empty warehouse → library; keyboard and modal controls",
+    "One-time rescue, explicit paper discovery, paper stays exposed after floor placement",
+    "Reference panel stays usable; selection preserved; occupied-slot protection and wrong shelving",
+    "Floor/side recovery; shelving activates automatically without reading all books; small viewport checks",
+    "Reward can be closed unopened, reopened, read at own pace, then reflection → ending",
+    "Notebook reread; one rescue/reaction only; moving books after completion keeps the reward",
+    "Reset clears inventory, reference panel, and reward"
+  ],
+  "page_errors": [],
+  "console_errors": [],
+  "network_requests": [],
+  "not_verified": [
+    "GitHub Pages deployment",
+    "Safari/Firefox",
+    "human playtime and narrative pacing",
+    "file:// navigation",
+    "HTTP URL delivery"
+  ]
+}

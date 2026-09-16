@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="月光観測記 — 導入アドベンチャーと本の配架を体験する、短いWebプロトタイプ。">
+<title>月光観測記 ｜ 序章・最初の棚</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23d9bc84'/%3E%3Ccircle cx='11' cy='12' r='12' fill='%230b151a'/%3E%3C/svg%3E">
+<style>
+/* All artwork, fonts (system fonts), styles and logic are local. No network calls. */
+:root{--ink:#d8dfdc;--muted:#a0aeaa;--faint:#657a75;--night:#0b151a;--panel:#101e24;--line:#526b685c;--gold:#d9bc84;--mint:#a8cec2;--serif:"Yu Mincho","Hiragino Mincho ProN","Noto Serif CJK JP",serif;--sans:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif}
+*{box-sizing:border-box} [hidden]{display:none!important} html{background:var(--night)} body{margin:0;color:var(--ink);font:14px/1.8 var(--sans);background:radial-gradient(ellipse at 65% 0,#182a30 0,transparent 55%),var(--night);min-height:100vh} button{font:inherit;color:inherit;cursor:pointer} button:disabled{cursor:default;opacity:.4} button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:5px} button{touch-action:manipulation;-webkit-tap-highlight-color:transparent} ::selection{background:#557773;color:#fff} .serif,h1,h2,h3{font-family:var(--serif);font-weight:400} .eyebrow{font-size:10px;letter-spacing:.25em;color:var(--muted)} .quiet{color:var(--muted)} .small{font-size:12px} .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.btn{background:transparent;border:1px solid var(--line);padding:9px 19px;letter-spacing:.1em;border-radius:2px;transition:background .15s,border-color .15s} .btn:hover:not(:disabled){background:#a8cec210;border-color:var(--mint)} .btn.primary{background:var(--gold);border-color:var(--gold);color:#172328} .btn.primary:hover{background:#e9d2aa} .btn.subtle{border-color:transparent;color:var(--muted)} .btn.subtle:hover{color:var(--ink)} .icon-btn{border:0;background:transparent;color:var(--muted);padding:8px 12px;font-size:20px} .icon-btn:hover{color:var(--gold)}
+#app{max-width:1400px;padding:0 34px;margin:auto} .topbar{height:66px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);gap:16px} .brand{display:flex;align-items:center;gap:13px;font-family:var(--serif);font-size:19px;letter-spacing:.14em}.moon-icon{width:22px;height:22px;border:1px solid var(--gold);border-radius:50%;position:relative;display:inline-block}.moon-icon:after{content:"";position:absolute;width:18px;height:18px;border-radius:50%;background:#101d23;left:-3px;top:-2px} .topnav{display:flex;align-items:center;gap:6px} .topnav .btn{font-size:12px;padding:5px 12px} .chapterbar{display:flex;gap:18px;justify-content:space-between;align-items:center;min-height:50px} .chapterbar h1{font-size:14px;margin:0;letter-spacing:.15em;color:var(--gold)} #objective{font-size:12px;margin:0;color:var(--muted);text-align:right} #stage{height:clamp(455px,calc(100dvh - 236px),720px);position:relative;isolation:isolate;border:1px solid #5d737652;background:#0e1b24;overflow:hidden;border-radius:3px} #scene-art,#title-art{position:absolute;inset:0;pointer-events:none} #scene-art svg,#title-art svg{width:100%;height:100%;display:block} .vignette{position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 100px 24px #020b1066;background:linear-gradient(0deg,#041018e0 0%,transparent 32%,transparent 80%,#03101a38)} .scene-caption{position:absolute;top:23px;left:27px;z-index:1;color:#becac4;font-size:11px;letter-spacing:.24em;pointer-events:none} .scene-caption:before{content:"";display:inline-block;width:22px;border-top:1px solid var(--gold);margin:0 12px 3px 0} .ambience{position:absolute;right:27px;top:23px;letter-spacing:.13em;color:#93ada07a;font:12px var(--serif);pointer-events:none} .dust{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(1px 1px at 32% 33%,#c7d7bd88 50%,transparent),radial-gradient(1px 1px at 68% 43%,#d5d5ba77 50%,transparent),radial-gradient(1px 1px at 53% 16%,#d5d5ba77 50%,transparent);background-size:311px 217px;opacity:.45}
+#hotspots{position:absolute;inset:0} .hotspot{position:absolute;z-index:2;transform:translate(-50%,-50%);display:flex;align-items:center;gap:9px;white-space:nowrap;padding:8px 13px 8px 9px;border:1px solid #aec4b24d;border-radius:2px;background:#0a161bbb;box-shadow:0 2px 16px #04101470;color:#d1dacf;font-size:12px;letter-spacing:.09em;transition:background .2s,border-color .2s} .hotspot:before{content:"";width:6px;height:6px;flex-shrink:0;border:1px solid var(--gold);transform:rotate(45deg)} .hotspot:hover,.hotspot:focus-visible{background:#172e31ed;border-color:var(--gold)} .hotspot.new:before{background:var(--gold);box-shadow:0 0 9px #d9bc8470} .hotspot.exit{color:var(--gold)} .hotspot.dim{opacity:.72} #scene-prompt{position:absolute;bottom:27px;left:28px;right:28px;pointer-events:none;font-family:var(--serif);color:#bccdc4;letter-spacing:.09em;background:linear-gradient(90deg,#0a151b99,transparent);padding:12px 16px;border-left:1px solid var(--gold)}
+#dialogue{position:absolute;z-index:8;left:22px;right:22px;bottom:19px;box-shadow:0 6px 28px #0004} #dialogue-next{width:100%;text-align:left;border:1px solid #99aba35e;border-top-color:#bdc1a878;border-radius:2px;background:linear-gradient(110deg,#111f25f7,#101d23f5);padding:18px 26px 22px;min-height:151px;display:block;position:relative;line-height:1.85} #dialogue-next:hover{border-color:#b9c6b08c} #speaker{display:block;font-size:11px;color:var(--gold);letter-spacing:.22em;margin-bottom:8px} #dialogue-text{display:block;font:clamp(15px,1.23vw,19px)/1.95 var(--serif);letter-spacing:.04em;white-space:pre-line;padding-right:30px} .next-mark{position:absolute;bottom:14px;right:22px;color:var(--gold);font-size:11px;letter-spacing:.08em} #dialogue-progress{font-size:9px;color:#8faaa56b;position:absolute;top:17px;right:22px;letter-spacing:.12em}
+.inventory{min-height:103px;display:grid;grid-template-columns:130px 1fr auto;gap:15px;align-items:center;border-bottom:1px solid var(--line);padding:12px 0} .inventory-label{color:var(--muted);font-size:11px;letter-spacing:.15em}.inventory-label strong{display:block;color:var(--ink);font-family:var(--serif);font-weight:400;font-size:15px;margin-top:1px} #inventory-items{display:flex;gap:8px;align-items:center;flex-wrap:wrap;min-height:55px} .inventory-empty{color:#839b9485;font-family:var(--serif);font-size:13px} .inventory-book{border:1px solid #65827b69;background:#12252b;display:flex;align-items:center;gap:10px;padding:8px 13px 8px 9px;border-radius:2px;font-size:12px} .inventory-book.selected{border-color:var(--gold);background:#b89c6220;color:#e9d5ac}.mini-spine{display:inline-block;width:13px;height:34px;background:var(--book-color);border:1px solid #ffffff25;border-left:3px solid #0003;box-shadow:2px 2px 3px #0004}.inventory-actions{display:flex;gap:5px;align-items:center}.inventory-actions .btn{font-size:11px;padding:7px 10px} #footerline{font-size:10px;color:#809b8d80;letter-spacing:.1em;text-align:right;margin:8px 0 10px}
+#title-screen{position:fixed;z-index:30;inset:0;background:#0a161d;overflow-y:auto;display:flex;align-items:center;min-height:500px} #title-art{left:8%;opacity:.8} .title-shade{position:absolute;inset:0;background:linear-gradient(90deg,#07131cf5 0,#07131ce8 27%,#07131c60 61%,#07131c25),linear-gradient(0deg,#061018,transparent 35%);pointer-events:none} .title-content{position:relative;z-index:1;margin:70px 7vw;max-width:700px;padding:12px 20px} .title-content .eyebrow{color:var(--gold);margin-bottom:28px;font-size:11px;letter-spacing:.33em} .title-content h1{font-size:clamp(48px,6.7vw,102px);letter-spacing:.16em;line-height:1.35;margin:0 0 25px;text-shadow:0 0 36px #abc6be1a} .title-content h1 span{display:block} .title-copy{font-family:var(--serif);font-size:16px;letter-spacing:.17em;line-height:2.3;color:#b5c6be;margin:20px 0 38px} .title-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.title-actions .btn{padding:12px 30px}.title-meta{margin-top:28px;color:#8b9f97;font-size:11px;letter-spacing:.13em}.title-footer{position:absolute;bottom:24px;left:calc(7vw + 20px);right:40px;font-size:10px;display:flex;justify-content:space-between;gap:24px;color:#8da6988c;letter-spacing:.2em} .title-seal{position:absolute;right:7%;top:9%;color:#c3c9b088;font-size:11px;writing-mode:vertical-rl;letter-spacing:.3em;line-height:2.5;border-left:1px solid #aeb18f45;padding-left:15px;pointer-events:none}
+#shelf-view{position:absolute;inset:0;z-index:5;padding:24px 30px 18px;overflow:auto;background:radial-gradient(ellipse at 50% 35%,#254041ed,#0b171efa 85%)} .shelf-heading{display:flex;justify-content:space-between;align-items:start;gap:16px;max-width:1020px;margin:0 auto}.shelf-heading h2{margin:0;font-size:21px;letter-spacing:.13em;color:#d9d7bd}.shelf-heading p{margin:4px 0 0;font-size:11px;color:var(--muted)} .shelf-controls{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.shelf-controls .btn{padding:6px 12px;font-size:11px}.physical-shelf{margin:23px auto 0;max-width:840px;position:relative;padding:16px 28px 20px;border:12px solid #35403a;border-bottom-width:18px;box-shadow:0 10px 30px #020a1488,inset 0 0 45px #0008;background:repeating-linear-gradient(0deg,#223330 0px,#223330 8px,#1c2c2a 10px,#213331 11px)}.physical-shelf:after{content:"";position:absolute;left:-14px;right:-14px;bottom:-19px;height:8px;background:linear-gradient(#737263,#313e37);box-shadow:0 8px 8px #030b1177}.shelf-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:end}.shelf-slot{height:clamp(144px,23dvh,218px);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px dashed #afb9a34a;background:#0a15195c;color:#9caea08c;border-radius:3px}.shelf-slot.empty:hover{background:#bdd0b513;border-color:#c7ceb289}.shelf-slot.placeable{border-color:#d9bc8488;background:#d9bc8410;color:var(--gold)}.slot-index{position:absolute;bottom:-34px;font-size:10px;color:#c3c6a9ba}.shelf-slot.occupied{border:0;background:transparent;padding:0;justify-content:end}.book-spine{width:75%;height:92%;background:linear-gradient(90deg,#0007,transparent 12%,#fff1 20%,transparent 75%,#0004),var(--book-color);border:1px solid #c6d1b130;border-bottom:3px solid #060e1377;box-shadow:9px 5px 8px #0007;display:flex;align-items:center;justify-content:center;position:relative;border-radius:3px 6px 2px 2px;color:#ede1ba}.book-spine:before,.book-spine:after{content:"";position:absolute;left:11%;right:11%;height:3px;border-top:1px solid #dcd7a95c;border-bottom:1px solid #dcd7a945}.book-spine:before{top:13px}.book-spine:after{bottom:13px}.book-spine span{writing-mode:vertical-rl;font-family:var(--serif);letter-spacing:.2em;font-size:clamp(14px,1.5vw,21px)}.book-spine small{position:absolute;bottom:27px;font-size:9px;opacity:.5}.shelf-slot.occupied:hover .book-spine{filter:brightness(1.18)} .slot-plus{font-size:24px;font-weight:200;line-height:1.4}.slot-hint{font-size:10px;letter-spacing:.1em}.shelf-lower{max-width:840px;margin:25px auto 0;display:flex;justify-content:space-between;align-items:center;gap:14px}.shelf-lower .btn{font-size:12px}.shelf-lower .quiet{font-size:11px;margin:0}.resting-places{max-width:840px;margin:14px auto 0;display:flex;gap:12px}.resting-place{flex:1;border:1px solid #677e695e;background:#13212580;padding:8px 15px;text-align:left;display:flex;justify-content:space-between;align-items:center;font-size:12px}.resting-place small{font-size:10px;color:var(--muted)}.resting-place:hover{border-color:var(--gold);background:#dec7930d}.resting-place.placeable{border-color:#d9bc8470}.arrangement{color:#b6c7b5!important;font-family:var(--serif);font-size:12px;min-height:20px}.shelf-selection{color:var(--gold);font-size:11px;margin:14px auto 0;max-width:840px;min-height:20px}
+#modal{width:min(780px,calc(100vw - 36px));max-height:min(87dvh,920px);padding:0;border:1px solid #b2c0aa66;border-radius:3px;background:#12232a;color:var(--ink);box-shadow:0 24px 100px #0009;overflow:auto}#modal::backdrop{background:#041019c9;backdrop-filter:blur(4px)}.modal-header{padding:20px 26px 12px;display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:1px solid var(--line)}.modal-header h2{font-size:19px;letter-spacing:.1em;margin:0}.modal-body{padding:24px 28px 27px}.modal-body p{margin:0 0 17px}.modal-body h3{font-size:15px;color:var(--gold);margin:24px 0 8px}.modal-body h3:first-child{margin-top:0}.modal-actions{margin-top:22px;display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px}.book-detail{display:grid;grid-template-columns:177px 1fr;gap:28px}.book-cover{min-height:243px;background:linear-gradient(100deg,#0008,transparent 15%,#ffffff0d 18%,transparent 26%),var(--book-color);border:1px solid #d0d2b35e;box-shadow:8px 8px 0 #04131b,10px 9px 0 #77867b;display:flex;align-items:center;justify-content:center;position:relative;padding:26px}.book-cover:after{content:"";inset:15px;position:absolute;border:1px solid #d0d2b338;pointer-events:none}.cover-name{writing-mode:vertical-rl;letter-spacing:.35em;line-height:1.8;font-family:var(--serif);font-size:22px;color:#e6ddbc}.cover-symbol{position:absolute;bottom:30px;font-size:18px;opacity:.5;color:#d8cfb0}.book-meta{font-size:11px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:11px}.book-description{font-family:var(--serif);line-height:2.1;font-size:15px}.book-pages{margin:24px 0 0;padding:22px 25px;background:linear-gradient(110deg,#d8d7be,#c7cbb7);color:#243b3a;border-left:4px solid #94a49b;box-shadow:inset 0 0 38px #657d5c15}.book-pages .eyebrow{color:#4d645e}.book-pages p{font-family:var(--serif);font-size:16px;line-height:2.05;margin:14px 0;white-space:pre-line}.notebook-entry{padding:15px 0;border-bottom:1px solid var(--line)}.notebook-entry:first-child{padding-top:0}.notebook-entry:last-child{border:0}.notebook-entry h3{margin:0 0 5px;font-size:14px}.notebook-entry p{color:#c0cec2;font-family:var(--serif);font-size:14px;margin:0;line-height:2;white-space:pre-line}.backlog-item{padding:13px 0;border-bottom:1px solid var(--line)}.backlog-item strong{font-size:11px;letter-spacing:.1em;color:var(--gold);font-weight:400}.backlog-item p{font-family:var(--serif);font-size:15px;margin:4px 0 0;white-space:pre-line}.book-list{display:grid;gap:10px}.book-list button{width:100%;text-align:left;padding:12px 16px;border:1px solid var(--line);background:#172b2f;display:flex;gap:15px;align-items:center}.book-list button:hover{border-color:var(--gold)}.book-list strong{font-family:var(--serif);font-weight:400;font-size:16px}.book-list small{display:block;color:var(--muted);font-size:11px}.plaque{background:#c2c8ad;color:#263e36;border:7px double #718476;padding:22px;text-align:center;box-shadow:4px 6px 0 #04181e}.plaque h3{color:#284238;font-size:24px;letter-spacing:.25em;margin:0 0 16px}.plaque p{font-family:var(--serif);font-size:17px;line-height:2.2;white-space:pre-line;margin:0}.hint-box{border-left:1px solid var(--gold);padding:4px 18px;color:#c3d2c8}.hint-box p{font-family:var(--serif);font-size:16px;line-height:2}.key{border:1px solid #768d8466;padding:1px 5px;font-size:11px;border-radius:2px;color:var(--gold)}
+#toast{position:fixed;z-index:60;bottom:24px;left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100vw - 32px);padding:10px 20px;background:#203630f5;border:1px solid #bdc19b7d;color:#ece9d0;font-size:13px;border-radius:3px;box-shadow:0 4px 25px #0006;pointer-events:none} #end-screen{position:absolute;inset:0;z-index:12;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 40%,#142a2aee,#091721f7);text-align:center;padding:24px;overflow:auto}.end-content{max-width:590px}.end-content .eyebrow{color:var(--gold);margin-bottom:18px}.end-content h2{font-family:var(--serif);font-size:clamp(24px,3vw,39px);letter-spacing:.13em;line-height:1.8;margin:14px 0 20px}.end-content p{font-family:var(--serif);color:#b4c8bc;line-height:2.1;letter-spacing:.05em;font-size:14px}.end-content .title-actions{justify-content:center;margin-top:25px}.end-content .small{font-family:var(--sans);font-size:11px;color:#839e928c;margin-top:22px}.reveal{animation:reveal .5s ease-out}@keyframes reveal{from{opacity:.2;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:1600px){#stage{height:min(720px,calc(100dvh - 250px))}}@media(max-width:900px){#app{padding:0 16px}.brand{font-size:16px}.brand .eyebrow{display:none}.inventory{grid-template-columns:85px 1fr;gap:10px}.inventory-actions{grid-column:2}.inventory-label strong{font-size:13px}#stage{height:clamp(460px,calc(100dvh - 285px),680px)}.inventory-book{padding:6px 9px;font-size:11px}.physical-shelf{padding:15px 17px 20px}.shelf-slots{gap:15px}#shelf-view{padding:20px}.shelf-heading h2{font-size:18px}.hotspot{font-size:11px;padding:7px 9px;gap:6px}.title-content{margin-left:5vw}.title-copy{font-size:14px}.title-content h1{font-size:72px}.title-footer{left:calc(5vw + 20px)}.book-detail{grid-template-columns:150px 1fr;gap:22px}.book-cover{min-height:220px}.chapterbar{gap:12px}}
+@media(max-width:560px){#app{padding:0 10px}.topbar{height:60px}.topnav{gap:0}.topnav .btn{padding:5px 7px;font-size:11px}.brand{font-size:14px;gap:8px}.moon-icon{width:17px;height:17px}.moon-icon:after{width:14px;height:14px}.chapterbar{min-height:63px;align-items:start;flex-direction:column;justify-content:center;gap:0}#objective{text-align:left;font-size:11px}#stage{height:540px}.hotspot{font-size:10px;padding:7px;max-width:46vw}.scene-caption{top:16px;left:16px;font-size:10px}.ambience{display:none}#dialogue{left:8px;right:8px;bottom:9px}#dialogue-next{padding:14px 17px 26px;min-height:163px}#dialogue-text{font-size:14px;padding-right:0}.scene-caption{max-width:80%}.title-content{padding:12px;margin:70px 6vw}.title-content h1{font-size:62px}.title-content .eyebrow{font-size:9px}.title-meta{font-size:10px}.title-footer{left:calc(6vw + 12px);right:15px;font-size:8px}.title-footer span:last-child{display:none}.title-seal{right:5%;font-size:10px}.title-copy{font-size:13px}.title-actions .btn{padding:10px 23px}#shelf-view{padding:14px 11px}.shelf-heading{gap:10px;flex-direction:column}.shelf-controls{justify-content:start}.physical-shelf{border-width:8px;border-bottom-width:17px;margin-top:18px;padding:12px 11px 19px}.shelf-slots{gap:11px}.shelf-slot{height:166px}.book-spine{width:90%}.book-spine span{font-size:15px}.slot-hint{font-size:9px}.shelf-lower{gap:8px;margin-top:21px}.shelf-lower .btn{padding:7px 12px}.shelf-lower p{font-size:10px}.resting-places{gap:8px}.resting-place{padding:7px 8px;font-size:11px;flex-direction:column;align-items:start}.shelf-selection{font-size:10px}.inventory{grid-template-columns:64px 1fr}.inventory-empty{font-size:11px}.inventory-actions{flex-wrap:wrap}.inventory-actions .btn{font-size:10px}#inventory-items{gap:6px}.inventory-book{font-size:10px;padding:5px 8px;gap:6px}.mini-spine{width:10px;height:27px}.modal-header{padding:13px 18px 8px}.modal-header h2{font-size:17px}.modal-body{padding:19px}.book-detail{grid-template-columns:108px 1fr;gap:17px}.book-cover{min-height:180px;padding:17px}.cover-name{font-size:18px}.book-description{font-size:13px}.book-meta{font-size:10px}.book-pages{padding:16px 18px}.book-pages p{font-size:14px}.modal-actions .btn{font-size:12px;padding:8px 13px}.end-content h2{font-size:25px}}
+
+/* 0.2: a small reference sheet beside the existing shelf, not a modal or a puzzle overlay. */
+.shelf-workspace{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:start}
+.shelf-workspace.with-chart{grid-template-columns:minmax(0,1fr) 296px}.shelf-main{min-width:0}.shelf-heading{max-width:1120px}
+.chart-panel{position:sticky;top:0;margin-top:23px;min-width:0}.chart-paper{background:linear-gradient(125deg,#d6d5bd,#bec6ad);color:#263d36;border:1px solid #899b82;padding:18px 14px 15px;box-shadow:3px 5px 0 #071820,0 8px 24px #0003}
+.chart-paper h3{font:16px/1.6 var(--serif);letter-spacing:.09em;color:#263d36;margin:0 0 6px}.chart-paper p{font:12px/1.8 var(--serif);margin:0 0 13px;color:#3d574c}.chart-paper .eyebrow{font-size:9px;color:#536b5b;letter-spacing:.14em;margin-bottom:9px}
+.chart-table{border-collapse:collapse;table-layout:fixed;width:100%;font:13px/1.7 var(--serif);text-align:center}.chart-table th,.chart-table td{border:1px solid #69827580;padding:9px 3px;overflow-wrap:anywhere}.chart-table th{font-weight:400;font-size:11px;background:#7f947615}.chart-table td{height:68px;vertical-align:middle}
+.chart-foot{font-size:10px;color:var(--muted);line-height:1.8;margin-top:12px}.shelf-lower{margin-top:14px;align-items:start}.shelf-lower .arrangement{margin:0}.shelf-lower .btn{flex-shrink:0}
+.shelf-sigil{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;color:#d9d9aa;opacity:.2;filter:drop-shadow(0 0 5px #d9e6b5)}.shelf-sigil.reacting{animation:sigil-reveal 1.8s ease-out both}
+@keyframes sigil-reveal{0%{opacity:0}38%{opacity:.85}100%{opacity:.2}}
+.discovery-dialogue{border-left:1px solid var(--gold);padding:2px 14px;margin:22px 0 0}.discovery-dialogue p{font:14px/1.9 var(--serif);margin:6px 0 14px}.discovery-dialogue strong{font:11px var(--sans);color:var(--gold);display:block;margin-bottom:5px}
+.diary-cover{--book-color:#5b6760}.diary-pages p{line-height:2.2}.diary-hint{font-size:11px;color:var(--muted);margin-top:16px!important}.shelf-controls .btn[aria-expanded="true"]{border-color:var(--gold);color:var(--gold)}
+@media(max-width:1050px){.shelf-workspace.with-chart{grid-template-columns:minmax(0,1fr)}.chart-panel{position:static;grid-row:1;margin-top:10px}.chart-paper{padding:12px 15px}.chart-paper .eyebrow{display:none}.chart-paper h3{font-size:14px}.chart-paper p{margin-bottom:6px}.chart-table td{height:42px}.chart-table th,.chart-table td{padding:5px}.chart-foot{display:none}.shelf-workspace{gap:0}.shelf-lower{flex-wrap:wrap}}
+@media(max-width:560px){.chart-table{font-size:12px}.shelf-controls .btn{font-size:10px;padding:6px 8px}.shelf-lower .btn{font-size:11px}.shelf-workspace .physical-shelf{margin-top:16px}}
+
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<noscript><p style="padding:40px">このデモを遊ぶには JavaScript を有効にしてください。外部通信やログインは必要ありません。</p></noscript>
+<div id="title-screen">
+  <div id="title-art" aria-hidden="true"></div><div class="title-shade"></div>
+  <div class="title-seal" aria-hidden="true">序章<br>最初の棚</div>
+  <main class="title-content">
+    <div class="eyebrow">A SMALL STORY IN THE MOONLIGHT</div>
+    <h1><span>月光</span><span>観測記</span></h1>
+    <p class="title-copy">誰もいない書庫に、<br>まだ、続きがある。</p>
+    <div class="title-actions"><button class="btn primary" id="start-game">はじめる <span aria-hidden="true">→</span></button><button class="btn subtle" id="title-help">遊び方</button></div>
+    <p class="title-meta">導入ADV ＋ 探索・配架 / マウス・キーボード / 音声なし</p>
+  </main>
+  <div class="title-footer"><span>PLAYABLE PROTOTYPE · 0.2</span><span>シナリオ・謎は検証用の仮稿を含みます</span></div>
+</div>
+<div id="app" hidden>
+  <header class="topbar"><div class="brand"><span class="moon-icon" aria-hidden="true"></span>月光観測記 <span class="eyebrow">PROLOGUE</span></div><nav class="topnav" aria-label="補助メニュー"><button class="btn subtle" id="open-notes">手帳</button><button class="btn subtle" id="open-backlog">会話録</button><button class="btn subtle" id="open-help">遊び方</button><button class="btn subtle" id="back-title">表紙へ</button></nav></header>
+  <div class="chapterbar"><h1 id="chapter-title"></h1><p id="objective" aria-live="polite"></p></div>
+  <main id="stage" aria-label="探索画面">
+    <div id="scene-art" aria-hidden="true"></div><div class="dust" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div>
+    <div class="scene-caption" id="scene-caption"></div><div class="ambience" id="ambience" aria-hidden="true"></div>
+    <div id="hotspots" aria-label="調べられるもの"></div>
+    <div id="scene-prompt"></div>
+    <section id="shelf-view" aria-label="最初の本棚" hidden>
+      <div class="shelf-heading"><div><h2>窓辺の棚</h2><p>四冊の本が収まる、小さな一段。</p></div><div class="shelf-controls"><button id="read-plaque" class="btn">棚札を読む</button><button id="toggle-chart" class="btn" aria-controls="chart-panel" aria-expanded="false" hidden>配架表</button><button id="ask-hint" class="btn">手がかりを考える</button><button id="leave-shelf" class="btn subtle">部屋に戻る ↗</button></div></div>
+      <div class="shelf-workspace" id="shelf-workspace">
+        <div class="shelf-main">
+          <div class="physical-shelf">
+            <svg id="shelf-sigil" class="shelf-sigil" viewBox="0 0 500 220" preserveAspectRatio="xMidYMid meet" aria-hidden="true" hidden><g transform="translate(250 108)" fill="none" stroke="currentColor" stroke-width="1.3"><circle r="88"/><circle r="78"/><path d="M0-88 76 44H-76ZM0 88 76-44H-76Z"/><circle r="29"/><path d="M-110 0H110M0-103V103M-230 102H230"/></g></svg>
+            <div class="shelf-slots" id="shelf-slots"></div>
+          </div>
+          <div class="shelf-selection" id="shelf-selection" aria-live="polite"></div>
+          <div class="resting-places"><button id="put-floor" class="resting-place"><span>足元の床</span><small></small></button><button id="put-side" class="resting-place"><span>脇の空き棚</span><small></small></button></div>
+          <div class="shelf-lower"><p id="arrangement" class="arrangement"></p><button id="shelf-diary" class="btn primary" hidden>棚から現れた本</button></div>
+        </div>
+        <aside id="chart-panel" class="chart-panel" aria-label="発見した配架表" hidden></aside>
+      </div>
+    </section>
+    <section id="dialogue" aria-label="会話" hidden><button id="dialogue-next" aria-label="会話を次へ進める"><span id="speaker"></span><span id="dialogue-progress" aria-hidden="true"></span><span id="dialogue-text" aria-live="polite"></span><span class="next-mark" aria-hidden="true">次へ ▹</span></button></section>
+    <section id="end-screen" aria-label="デモ終了" hidden><div class="end-content"><div class="eyebrow">END OF PROLOGUE</div><div class="moon-icon" aria-hidden="true"></div><h2>最初の棚が、<br>ひらいた。</h2><p>戻した四冊の奥にあったのは、<br>自分のことが書かれた一冊だった。</p><div class="title-actions"><button id="explore-after-end" class="btn primary">書庫をもう少し見る</button><button id="replay" class="btn">はじめから</button></div><p class="small">ここまでが今回のデモです。中盤・終盤は未実装です。</p></div></section>
+  </main>
+  <section class="inventory" id="inventory" aria-label="手元の本"><div class="inventory-label">IN YOUR HANDS<strong>手元の本</strong></div><div id="inventory-items"></div><div class="inventory-actions"><button class="btn subtle" id="inspect-selected" disabled>選択中を読む</button><button class="btn subtle" id="clear-selected" disabled>選択を外す</button></div></section>
+  <p id="footerline">クリックで調べる · 本を選んで置き場所をクリック · 会話は Space / Enter でも送れます</p>
+</div>
+<dialog id="modal" aria-labelledby="modal-title"><header class="modal-header"><h2 id="modal-title"></h2><button id="modal-close" class="icon-btn" aria-label="閉じる">×</button></header><div class="modal-body" id="modal-body"></div></dialog>
+<div id="toast" role="status" hidden></div>
+
+<script id="game-data">
+'use strict';
+/**
+ * EDITABLE CONTENT — based on 脚本原案.md and the approved TUTORIAL-REDESIGN.md.
+ * Original: absent uncle; rescuing ぷぎゅ; shelving activates a magic circle;
+ * the first diary entry below is quoted verbatim from the supplied screenplay.
+ * Demo proposals: connecting the mantis scene to this visit, the four-book chart,
+ * 星辰の書, most dialogue, and finding the first diary page after this shelf.
+ * The protagonist's name, age and gender, and the later revelations stay unset.
+ */
+const GAME_DATA = {
+  version: '0.2.0',
+  rescueBook: 'demon',
+  shelf: {
+    title: '窓辺の棚',
+    inscription: '窓辺の棚',
+    chartInstruction: '棚を正面から見て、左から順に戻すこと。',
+    order: ['demon', 'stars', 'arcana', 'eibon'],
+    slotCount: 4
+  },
+  books: [
+    {id:'demon',title:'悪魔信仰',color:'#6b5055',symbol:'◇',initialLocation:'floor',
+      description:'くすんだ赤の布表紙。床に横倒しになっていた、ずっしりと重い本。\n金色だった表題は、まだはっきりと読める。',
+      pages:['細かな図版の横に、読めない文字が並んでいる。余白にだけ、おじさんらしい鉛筆の丸がついていた。'],
+      note:'余白に鉛筆の丸がついている。おじさんが読んでいた跡だろうか。'},
+    {id:'stars',title:'星辰の書',color:'#3f596a',symbol:'✧',initialLocation:'desk',
+      description:'青灰色の薄い本。表紙に、小さな点と線が刻まれている。\n机の上には、この本の形にほこりが薄くなった跡がある。',
+      pages:['夜空の図に、たくさんの点と線が描き込まれている。見覚えのある星座は、すぐには見つからなかった。'],
+      note:'夜空のような点と線の図。見覚えのある星座は見つからなかった。'},
+    {id:'arcana',title:'妖の秘術',color:'#4f6863',symbol:'⌁',initialLocation:'desk',
+      description:'緑がかった古い表紙。背の布が少しほつれている。\n紙の端には、何度も開いたような跡があった。',
+      pages:['見出しだけでも、ずいぶん物騒だ。端の折れたページが、何か所もある。'],
+      note:'物騒な見出しが続く。何か所ものページの端が折られている。'},
+    {id:'eibon',title:'エイボンの書',color:'#78654f',symbol:'◈',initialLocation:'shelf:1',
+      description:'茶色の厚い本。窓辺の小さな棚に、一冊だけ残っていた。\n表紙にも背にも、同じ題名がある。',
+      pages:['綴じ目の近くまで、文字がぎっしり詰まっている。表題だけは、背表紙と同じものだとわかった。'],
+      note:'窓辺の棚にあった一冊。最初に置かれていた場所が正しいとは限らない。'}
+  ],
+  diary: {
+    title: '月光観測記',
+    description: '棚の奥から現れた、薄い一冊。\n表紙に『月光観測記』と書いてある。',
+    page: '〇月✕日　弟が子どもを連れてきた。私は一目でその子がスペシャルな子供だと分かった。つぶらなおめめが昔飼っていたハエトリグモみたいでとってもキュートだ。この子はきっと愛されるために生まれてきたのだ。……'
+  },
+  scenes: {
+    lane:{chapter:'序章 / おじさんの書庫へ',caption:'水路沿いの小道',ambience:'虫の声が、途切れている。'},
+    gate:{chapter:'序章 / 灯りのある倉庫',caption:'古い倉庫の前',ambience:'戸の向こうに、紙の匂い。'},
+    library:{chapter:'最初の棚 / 窓辺の棚',caption:'月明かりの書庫',ambience:'誰も触れていない本。'}
+  },
+  story: {
+    opening:[
+      ['主人公','おじさんがいなくなってから、書庫はそのままになっている。'],
+      ['主人公','今日は、その本を片づけに来た。'],
+      ['主人公','子どものころ、周りとうまく話せなかった自分に、おじさんはよく付き合ってくれた。'],
+      ['主人公','変な本ばかりだったけれど。大事にしていたことは、覚えている。'],
+      ['主人公','家のそばの水路で、細い影が動いた。\n……カマキリ？'],
+      ['主人公','立ち止まると、向こうも止まった。\n偶然にしては、こちらを待っているみたいだった。']
+    ],
+    mantis:[
+      ['主人公','葉っぱだと思っていた影が、ゆっくりと鎌を持ち上げた。'],
+      ['主人公','逃げない。\n水に映った月と、こちらとを、交互に見ている。'],
+      ['主人公','その足元に、糸のようなものが見えた。\n風はないのに、石の上をほどけるように動いている。'],
+      ['主人公','ハリガネムシ。\nその名前だけが、どこかから頭に浮かんだ。'],
+      ['主人公','誰に教わった名前だっただろう。\n思い出そうとする前に、カマキリが歩き出した。'],
+      ['主人公','水路を離れ、狭い小道の先へ。\n追いかけるつもりはなかった。少なくとも、最初は。']
+    ],
+    arriveGate:[
+      ['主人公','小道の先に、おじさんの書庫が見えた。'],
+      ['主人公','本を置くために使っていた、古い倉庫だ。\n高い窓に、淡い灯りが残っている。'],
+      ['主人公','足元を見た。\nさっきまでいたカマキリは、どこにも見当たらなかった。'],
+      ['主人公','扉のすきまから、紙の匂いがする。\n昔と、変わっていない。']
+    ],
+    door:[
+      ['主人公','扉に触れると、乾いた音がした。'],
+      ['主人公','……おじさん。'],
+      ['主人公','返事はない。\nわかっていたことなのに、少しだけ待ってしまった。'],
+      ['主人公','扉は、押すとゆっくり開いた。']
+    ],
+    enter:[
+      ['主人公','本だった。\n倉庫の中を埋めていたのは、箱でも道具でもなく、本。'],
+      ['主人公','壁に沿って高い本棚が並び、そのあいだにも、本の影が重なっている。'],
+      ['主人公','『悪魔信仰』『妖の秘術』『エイボンの書』……。'],
+      ['主人公','相変わらず、すごい題名ばかりだ。'],
+      ['主人公','とりあえず、床の本から戻していこう。'],
+      ['本の下','ぷぎゅ'],
+      ['主人公','……今、何か聞こえた。']
+    ],
+    rescue:[
+      ['謎の生き物','助かったぜ'],
+      ['主人公','……しゃべった。'],
+      ['謎の生き物','本を片づけるんだろ。俺も手を貸してやる。'],
+      ['主人公','本、持てるの？'],
+      ['謎の生き物','まずは指示だ。物事には順番がある。'],
+      ['ぷぎゅ','おい。今どかしたところ、紙が残ってるぞ。']
+    ],
+    chartFound:[
+      ['主人公','配架表……。本を戻す場所が書いてある。'],
+      ['ぷぎゅ','それなら、でたらめに積み直さなくて済むな。']
+    ],
+    firstShelf:[
+      ['主人公','窓辺の棚は、この部屋のほかの本棚よりずっと小さかった。'],
+      ['主人公','四冊ほど入る一段に、一冊だけが残っている。\nその下には、手書きの棚札が留められていた。'],
+      ['主人公','ここにある一冊も、まだ片づけの途中なのかもしれない。']
+    ],
+    completion:[
+      ['主人公','……光った？'],
+      ['ぷぎゅ','今、棚の奥が動いたぞ。'],
+      ['主人公','本が、もう一冊……。']
+    ],
+    diaryReflection:[
+      ['主人公','この字……おじさんのだ。'],
+      ['主人公','これ、自分のことだ。'],
+      ['主人公','どうして、こんなところに。']
+    ]
+  },
+  observations:{
+    water:[['主人公','水の表面に月が浮かんでいる。\n流れはほとんどない。'],['主人公','近づいた足音が、自分のものより少しだけ遅れて聞こえた。\n……水のせいだろうか。']],
+    laneBack:[['主人公','家のほうを振り返った。'],['主人公','片づけるのは、書庫の本だ。\nまずは、小道の先へ行こう。']],
+    gateWindow:[['主人公','高い窓に、何かが積み重なった影が映っている。\nここにも、本が置いてあるのだろう。']],
+    sign:[['主人公','扉の横の札は、文字がほとんど消えていた。'],['主人公','ここを使わなくなってから、時間がたっている。']],
+    door:[['主人公','入ってきた扉だ。\nすきまから、さっきの水路沿いの小道が見える。'],['主人公','鍵がかかっているわけではない。\nもう少し、本を片づけていこう。']],
+    libraryWindow:[['主人公','高い窓から、月が見える。\n机の灯りとは違う色で、本の背を照らしていた。'],['主人公','ガラスには薄くほこりが積もっている。\n内側に、指一本分だけきれいな線が残っていた。']],
+    farShelf:[['主人公','奥には、まだいくつもの棚がある。\nここからでは、背表紙の文字までは読めない。'],['主人公','まずは、手前の本から片づけよう。']],
+    covered:[['主人公','壁ぎわの台に、布がかかったものが置かれている。\n大きさは、本のようにも見える。'],['主人公','今は、床と机の本を戻すところから始めよう。']],
+    emptyDesk:[['主人公','机の上に、四角くほこりの薄い跡が残っている。\nここに本が置かれていた。']],
+    emptyFloor:[['主人公','床板に古い傷がある。\n本を置くなら、乾いていて踏まなさそうな、このあたりがいい。']],
+    side:[['主人公','窓辺の棚の脇に、空いた棚板がある。\n置き直すあいだ、ここを使ってもよさそうだ。']],
+    afterEnd:[['ぷぎゅ','まだ本は山ほどあるな。'],['主人公','手帳に写した、おじさんの文字を思い出した。']]
+  }
+};
+</script>
+<script id="game-core">
+'use strict';
+/** Pure game rules. They are also executed by tests/core.test.cjs, without a DOM. */
+const GameCore = (() => {
+  const byId = new Map(GAME_DATA.books.map(b => [b.id, b]));
+  const slots = Array.from({length:GAME_DATA.shelf.slotCount}, (_, i) => `shelf:${i}`);
+  const places = new Set(['desk','floor','side','hand', ...slots]);
+  function initialState() {
+    return {scene:'lane',view:'room',locations:Object.fromEntries(GAME_DATA.books.map(b=>[b.id,b.initialLocation])),selected:null,read:[],notes:[],log:[],chartOpen:false,flags:{mantis:false,doorChecked:false,rescued:false,chartFound:false,shelfSeen:false,plaque:false,solved:false,diaryRead:false,finished:false}};
+  }
+  function at(state, location) {return GAME_DATA.books.filter(b=>state.locations[b.id]===location).map(b=>b.id);}
+  function validate(state) {
+    if (Object.keys(state.locations).length !== byId.size) throw new Error('本の数が変わっています');
+    for (const id of byId.keys()) if (!places.has(state.locations[id])) throw new Error(`無効な本の位置: ${id}`);
+    for (const slot of slots) if (at(state,slot).length>1) throw new Error(`本が重複しています: ${slot}`);
+    if (state.selected !== null && (!byId.has(state.selected) || state.locations[state.selected]!=='hand')) throw new Error('選択中の本が手元にありません');
+    return true;
+  }
+  /** Never validates the solution here: wrong placements are intentionally legal. */
+  function move(state,id,location) {
+    if(!byId.has(id)||!places.has(location)) return {ok:false,reason:'invalid'};
+    if(slots.includes(location)&&at(state,location).some(other=>other!==id)) return {ok:false,reason:'occupied'};
+    const rescued=id===GAME_DATA.rescueBook && state.locations[id]!==location && !state.flags.rescued;
+    state.locations[id]=location;
+    if(rescued)state.flags.rescued=true;
+    if(state.selected===id&&location!=='hand') state.selected=null;
+    validate(state);
+    return {ok:true,rescued};
+  }
+  function pick(state,id) {const result=move(state,id,'hand');if(result.ok)state.selected=id;return result;}
+  function arrangement(state) {return slots.map(slot=>at(state,slot)[0]||null);}
+  function evaluate(state) {
+    const order=arrangement(state);
+    return {order,filled:order.filter(Boolean).length,solved:order.every((id,i)=>id===GAME_DATA.shelf.order[i])};
+  }
+  function activateShelf(state) {
+    if(state.flags.solved || !evaluate(state).solved)return false;
+    state.flags.solved=true;
+    return true;
+  }
+  function markRead(state,id) {if(!byId.has(id))return false;if(!state.read.includes(id))state.read.push(id);return true;}
+  return Object.freeze({initialState,at,validate,move,pick,arrangement,evaluate,activateShelf,markRead,book:id=>byId.get(id),slots:Object.freeze(slots)});
+})();
+</script>
+<script id="game-ui">
+'use strict';
+(() => {
+  const $ = id => document.getElementById(id);
+  const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  let state=GameCore.initialState();
+  let dialogue=null, toastTimer=null, currentArtwork='', previousFocus=null, pendingDiaryReflection=false;
+  const modal=$('modal');
+  const SCENE_NAMES={desk:'机',floor:'床',side:'脇の空き棚',hand:'手元'};
+  const bookLabel=id=>GameCore.book(id)?.title||'……';
+  const locationLabel=loc=>SCENE_NAMES[loc]||(loc?.startsWith('shelf:')?`窓辺の棚・左から${Number(loc.split(':')[1])+1}番目`:'不明');
+  const actionButton=(text,action,className='btn')=>{const b=document.createElement('button');b.type='button';b.className=className;b.textContent=text;b.addEventListener('click',action);return b;};
+  function addNote(id,title,text){if(!state.notes.some(n=>n.id===id))state.notes.push({id,title,text});}
+  function toast(text){clearTimeout(toastTimer);$('toast').textContent=text;$('toast').hidden=false;toastTimer=setTimeout(()=>$('toast').hidden=true,3600);}
+  function openModal(title,html){previousFocus=document.activeElement;$('modal-title').textContent=title;$('modal-body').innerHTML=html;if(!modal.open)modal.showModal();modal.scrollTop=0;}
+  function closeModal(){if(modal.open)modal.close();}
+  modal.addEventListener('close',()=>{
+    if(pendingDiaryReflection && state.flags.diaryRead && !state.flags.finished){
+      pendingDiaryReflection=false;
+      say(GAME_DATA.story.diaryReflection,()=>{
+        state.flags.finished=true;
+        $('end-screen').hidden=false;
+        render();
+        $('explore-after-end').focus({preventScroll:true});
+      });
+      return;
+    }
+    if(previousFocus?.isConnected&&!previousFocus.closest('[hidden]'))previousFocus.focus({preventScroll:true});
+  });
+  $('modal-close').addEventListener('click',closeModal);
+  modal.addEventListener('click',event=>{if(event.target===modal){const r=modal.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)closeModal();}});
+
+  // Original inline vector scenery. Coordinates match hotspot percentages; no image files.
+  const defs=`<defs>
+    <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#203b45"/><stop offset="1" stop-color="#0c1c25"/></linearGradient>
+    <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#254047"/><stop offset="1" stop-color="#1b3035"/></linearGradient>
+    <linearGradient id="wood" x2="1" y2=".4"><stop stop-color="#303d34"/><stop offset=".5" stop-color="#4a4b3b"/><stop offset="1" stop-color="#1c302d"/></linearGradient>
+    <linearGradient id="floor" x2="0" y2="1"><stop stop-color="#223b3b"/><stop offset="1" stop-color="#13272e"/></linearGradient>
+    <linearGradient id="window" x2=".2" y2="1"><stop stop-color="#3b6670"/><stop offset="1" stop-color="#243f4b"/></linearGradient>
+    <linearGradient id="beam" x2=".4" y2="1"><stop stop-color="#b7d1bd" stop-opacity=".17"/><stop offset="1" stop-color="#b7d1bd" stop-opacity="0"/></linearGradient>
+    <radialGradient id="lamp"><stop stop-color="#e4c387" stop-opacity=".26"/><stop offset=".4" stop-color="#d8b56b" stop-opacity=".09"/><stop offset="1" stop-color="#d8b56b" stop-opacity="0"/></radialGradient>
+    <radialGradient id="moonGlow"><stop stop-color="#e1e3b7" stop-opacity=".35"/><stop offset=".2" stop-color="#d4e2c0" stop-opacity=".13"/><stop offset="1" stop-color="#b3d3c1" stop-opacity="0"/></radialGradient>
+    <pattern id="grain" width="127" height="73" patternUnits="userSpaceOnUse"><path d="M0 6H127M0 42H127" stroke="#b6c7ad" stroke-opacity=".025"/><path d="M23 0v73M87 0v73" stroke="#000" stroke-opacity=".045"/></pattern>
+  </defs>`;
+  const palette=['#465c55','#59655c','#686858','#41595f','#5f5350','#70715b','#354e53','#595449','#415255'];
+  function bookRow(x,y,count,seed,scale=1){let out='',offset=0;for(let i=0;i<count;i++){let w=(18+(i*13+seed*7)%18)*scale,h=(72+(i*17+seed*11)%47)*scale;out+=`<g transform="translate(${x+offset} ${y-h})"><rect width="${w}" height="${h}" rx="1.5" fill="${palette[(i+seed)%palette.length]}"/><path d="M3 5v${h-10}M2 12h${w-4}M2 ${h-10}h${w-4}" stroke="#c7c1a6" opacity=".17" stroke-width="1"/>${i%3===0?`<rect x="${w*.28}" y="${h*.27}" width="${w*.45}" height="${h*.25}" fill="#b6c2a8" opacity=".15"/>`:''}</g>`;offset+=w+3*scale;}return out;}
+  function largeShelf(x,y,w,h,seed){let out=`<g><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="#0e2024" stroke="#3c4b40" stroke-width="14"/>`;for(let row=0;row<3;row++){let yy=y+145+row*150;out+=bookRow(x+15,yy,Math.floor(w/31),seed+row,.83);out+=`<rect x="${x-9}" y="${yy}" width="${w+18}" height="13" fill="url(#wood)"/><path d="M${x-9} ${yy+2}h${w+18}" stroke="#9aa080" opacity=".2"/>`;}return out+'</g>';}
+  function pugyuSVG(){return `<g data-pugyu="true" transform="translate(1340 500)">
+    <ellipse cy="93" rx="82" ry="16" fill="#06171b" opacity=".7"/>
+    <path d="M-13-68Q-6-93 7-68L29-28 80-28Q104-24 79-2L49 26 57 77Q56 95 38 82L1 59-38 86Q-59 99-57 74L-50 29-82 0Q-104-25-76-28L-31-28Z" fill="#8f9b83" stroke="#c4c9aa" stroke-width="2"/>
+    <path d="M-39 8Q0-27 41 8Q1 38-39 8Z" fill="#d5d6b8" stroke="#384f45" stroke-width="2"/>
+    <ellipse cx="3" cy="7" rx="10" ry="21" fill="#233936"/><ellipse cx="6" cy="0" rx="2.4" ry="7" fill="#d8dbc0"/>
+    <path d="M-18 42q18 9 36-2" fill="none" stroke="#4c6558" stroke-width="2" stroke-linecap="round"/>
+  </g>`;}
+  function revealedObjectsSVG(title){if(title)return '';return `
+    ${state.flags.rescued&&!state.flags.chartFound?`<g data-chart-paper="true" transform="translate(789 663) rotate(-9)"><path d="M0 0h84v59H0Z" fill="#bdc5a7" stroke="#788d76"/><path d="M8 14h66M8 24h66M8 34h66M23 14v32M41 14v32M59 14v32" stroke="#516b58" opacity=".6"/></g>`:''}
+    ${state.flags.rescued?pugyuSVG():''}
+    ${state.flags.solved?`<g data-diary="true" transform="translate(1050 592) rotate(-6)"><rect width="89" height="24" rx="2" fill="#667969" stroke="#d1c99e"/><path d="M4 11h78v8H4Z" fill="#c8cfac"/><path d="M8 3h69" stroke="#d6d2a7" opacity=".55"/></g>`:''}
+  `;}
+  function librarySVG(title=false){return `<svg viewBox="0 0 1600 850" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">${defs}
+    <rect width="1600" height="850" fill="url(#wall)"/><path d="M0 0h1600v68L0 160Z" fill="#10242c"/><path d="M0 68 1600 5M0 142 1600 55" stroke="#3e544d" stroke-width="7" opacity=".5"/>
+    <rect x="0" y="595" width="1600" height="255" fill="url(#floor)"/><path d="M0 596H1600M0 645H1600M0 725H1600M0 830H1600M530 595 380 850M800 595 870 850M1100 595 1430 850M170 595 -260 850" stroke="#768274" opacity=".12" stroke-width="2"/>
+    <rect x="38" y="190" width="85" height="419" fill="#152b30"/>${largeShelf(90,155,325,462,2)}${largeShelf(452,118,291,490,5)}
+    <path d="M915 350V120a112 112 0 0 1 224 0v230Z" fill="#122730" stroke="#556961" stroke-width="12"/><path d="M931 339V122a96 96 0 0 1 192 0v217Z" fill="url(#window)"/>
+    <circle cx="1053" cy="113" r="108" fill="url(#moonGlow)"/><circle cx="1053" cy="113" r="33" fill="#d7dfba"/><circle cx="1044" cy="105" r="29" fill="#3a6067"/>
+    <path d="M1027 23V342M930 168h194M930 262h194" stroke="#52655c" stroke-width="7"/><path d="M937 334 576 758h486l72-424Z" fill="url(#beam)"/>
+    <rect x="1189" y="226" width="244" height="380" fill="#0d2026" stroke="#374b43" stroke-width="15"/><path d="M1215 255h181v324h-181Z" fill="#152b2e" stroke="#617061" opacity=".5"/><path d="M1305 252v327" stroke="#617061" opacity=".3"/><circle cx="1368" cy="422" r="5" fill="#a1966a"/>
+    <rect x="770" y="364" width="390" height="226" fill="#162a2c" stroke="#54604c" stroke-width="13"/><rect x="779" y="374" width="372" height="167" fill="#16272a"/><rect x="769" y="537" width="391" height="16" fill="url(#wood)"/><path d="M768 539h394" stroke="#a9a47c" opacity=".35"/>
+    ${title?bookRow(805,536,10,6,1.1):GameCore.arrangement(state).map((id,i)=>id?`<g data-world-book="${id}"><rect x="${803+i*86}" y="393" width="53" height="144" fill="${GameCore.book(id).color}" stroke="#a49c79" stroke-opacity=".35"/><path d="M${809+i*86} 407h41M${809+i*86} 521h41" stroke="#ccc196" opacity=".45"/></g>`:'').join('')}
+    <rect x="895" y="560" width="130" height="34" rx="2" fill="#abb598"/><path d="M907 568h105M907 585h105" stroke="#5a7463" opacity=".5"/>
+    <ellipse cx="965" cy="462" rx="362" ry="285" fill="url(#lamp)"/><path d="M959 561 1469 562l51 40H921Z" fill="#535641"/><path d="M924 602h598v15H924Z" fill="#283c34"/><path d="m972 615-13 198h21l16-198M1457 615l41 198h-22l-43-198" fill="#263b33"/>
+    <g transform="translate(1210 482)"><ellipse cx="0" cy="79" rx="34" ry="7" fill="#0c211f"/><rect x="-6" y="4" width="12" height="74" fill="#6b7254"/><path d="M-41 12Q-31-22 0-29 31-22 41 12Z" fill="#9a9d70" stroke="#c8bc87" stroke-opacity=".3"/><ellipse cy="11" rx="40" ry="8" fill="#e1c28b" opacity=".8"/><circle cy="23" r="10" fill="#e4c795" opacity=".65"/></g>
+    ${(title?['stars','arcana']:GameCore.at(state,'desk')).map((id,i)=>`<g data-world-book="${id}" transform="translate(${1050+i*4} ${548-i*15}) rotate(-5)"><rect width="88" height="14" fill="${GameCore.book(id).color}"/><rect x="2" y="5" width="81" height="6" fill="#b3b69a"/></g>`).join('')}
+    ${(title?['demon']:GameCore.at(state,'floor')).map((id,i)=>`<g data-world-book="${id}" transform="translate(${702+i*28} ${648+i*6}) rotate(${13-i*8})"><rect width="106" height="19" fill="${GameCore.book(id).color}"/><rect x="3" y="7" width="100" height="8" fill="#b1b394"/><path d="M0 0h106" stroke="#b7b08b"/></g>`).join('')}
+    ${(!title?GameCore.at(state,'side'):[]).map((id,i)=>`<g data-world-book="${id}" transform="translate(${834+i*48} 590)"><rect width="37" height="36" fill="${GameCore.book(id).color}"/><path d="M4 5h28M4 31h28" stroke="#b7b08b" opacity=".45"/></g>`).join('')}
+    <path d="M800 628h349v8H800Z" fill="#536050"/>
+    <path d="M1469 169h100v459h-100Z" fill="#203439"/><path d="M1484 316q35-46 70 0l11 49h-92Z" fill="#647568" opacity=".6"/><path d="M1473 365h91v18h-91" fill="#253830"/>
+    ${revealedObjectsSVG(title)}
+    <rect width="1600" height="850" fill="url(#grain)"/><rect width="1600" height="850" fill="#082030" opacity=".14"/>
+  </svg>`;}
+  function laneSVG(){return `<svg viewBox="0 0 1600 850" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">${defs}
+    <rect width="1600" height="850" fill="url(#bg)"/><circle cx="1124" cy="143" r="172" fill="url(#moonGlow)"/><circle cx="1124" cy="143" r="47" fill="#d1dbc0"/><circle cx="1104" cy="132" r="40" fill="#29464f"/>
+    <path d="M0 0h262l43 97 159 17 45 346-509 179ZM1600 0h-156l-23 98-197 35-23 343 399 164Z" fill="#10232b"/>
+    <path d="M0 559 969 296l204 73L600 850H0Z" fill="#1b3439"/><path d="M654 850 1190 362h99L1127 850Z" fill="#2d4140"/><path d="M0 652 969 370l-60 480Z" fill="#172f39"/><path d="M0 658 985 365M0 707 750 480M32 755l596-176" fill="none" stroke="#71918a" stroke-width="3" opacity=".15"/>
+    <path d="m645 850 545-496 17 11L682 850Z" fill="#8c9681" opacity=".26"/><path d="M757 817 1178 413M786 753l218 22M867 683l186 12M943 611l123 7M1025 536l74 5" stroke="#6f8175" opacity=".3" stroke-width="2"/>
+    <path d="M928 243 1118 184 1286 249v158H927Z" fill="#263a3a"/><path d="m916 243 203-77 190 86" fill="none" stroke="#4e5f53" stroke-width="14"/><rect x="1121" y="286" width="70" height="121" fill="#111f22"/><rect x="977" y="282" width="72" height="64" fill="#87906a" opacity=".8"/><path d="M1013 282v64M977 314h72" stroke="#364a40" stroke-width="5"/>
+    <g fill="#142a30">${Array.from({length:15},(_,i)=>`<path d="M${i*99} 0q-35 159-15 390l-14 181 36-7-7-199Q${i*99+18} 122 ${i*99+65} 0Z" opacity="${.2+(i%4)*.12}"/>`).join('')}</g>
+    <g transform="translate(845 586) rotate(-14)" stroke="#a0b398" fill="none" stroke-linecap="round"><path d="M-8 40 7 1 4-14M5-13 18-18 10-3ZM4-10-4-27M17-15l18-13M2 15-31 30-48 13M-2 33l-21 26-39 9M5 5l29 15 14-28M9 17l34 24 24-5M7 0 3 37-12 60" stroke-width="3"/><path d="M-7 47q19 26 35 7t29 14q-3 16 14 12" stroke="#80998f" stroke-width="2"/></g>
+    <g stroke="#354d44" stroke-width="4" fill="none">${Array.from({length:20},(_,i)=>`<path d="M${i*84} 850q${25-i%3*30}-${90+i%5*38} ${i%3*26}-${140+i%4*45}"/>`).join('')}</g>
+    <rect width="1600" height="850" fill="url(#grain)"/></svg>`;}
+  function gateSVG(){return `<svg viewBox="0 0 1600 850" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">${defs}
+    <rect width="1600" height="850" fill="url(#bg)"/><path d="M184 199 810 34l638 165v535H184Z" fill="#2a403d"/><path d="m137 203 673-198 694 197" fill="none" stroke="#566055" stroke-width="29"/><path d="m138 202 672-191 694 198" fill="none" stroke="#859078" stroke-width="4" opacity=".25"/>
+    ${Array.from({length:22},(_,i)=>`<path d="M${205+i*57} 211v504" stroke="#152b2e" stroke-width="4" opacity=".7"/>`).join('')}
+    <rect x="640" y="289" width="323" height="403" fill="#10232a" stroke="#556050" stroke-width="18"/><rect x="656" y="303" width="140" height="372" fill="#39483d"/><rect x="807" y="303" width="141" height="372" fill="#34453a"/><path d="M675 324h106v147H675ZM827 324h104v147H827ZM675 495h106v160H675ZM827 495h104v160H827Z" stroke="#6c765e" opacity=".45" fill="none"/><path d="M800 297v378" stroke="#c1b77f" stroke-width="3" opacity=".45"/><circle cx="831" cy="491" r="7" fill="#a6a376"/>
+    <rect x="410" y="292" width="147" height="152" fill="url(#window)" stroke="#65715d" stroke-width="10"/><rect x="423" y="306" width="121" height="124" fill="#afb682" opacity=".28"/><path d="M483 297v142M415 368h137" stroke="#63735b" stroke-width="7"/><ellipse cx="483" cy="363" rx="270" ry="270" fill="url(#lamp)"/>
+    <rect x="1013" y="403" width="133" height="60" rx="3" fill="#818d70"/><path d="M1025 417h96m-96 13h106m-97 16h67" stroke="#3d5647" opacity=".6" stroke-width="3"/>
+    <path d="M0 723 643 675h320l637 48v127H0Z" fill="url(#floor)"/><path d="M178 850 662 697M1531 850 947 697M511 850 741 697M1090 850 871 697M0 783h1600" stroke="#728574" opacity=".17" stroke-width="2"/>
+    <g stroke="#233d34" fill="none" stroke-width="8"><path d="M90 740q50-160 149-165M126 718q-35-173 25-268M1350 737q8-221 123-281M1392 731q46-122 148-146"/></g><rect width="1600" height="850" fill="url(#grain)"/></svg>`;}
+
+  function renderArtwork(){
+    const key=state.scene==='library'?`${state.scene}:${JSON.stringify(state.locations)}:${state.flags.rescued}:${state.flags.chartFound}:${state.flags.solved}`:state.scene;
+    if(currentArtwork===key)return;
+    const changedScene=!currentArtwork.startsWith(state.scene);currentArtwork=key;
+    $('scene-art').innerHTML=state.scene==='lane'?laneSVG():state.scene==='gate'?gateSVG():librarySVG();
+    if(changedScene){$('scene-art').classList.remove('reveal');void $('scene-art').offsetWidth;$('scene-art').classList.add('reveal');}
+  }
+  function objective(){
+    if(state.flags.finished)return 'デモ終了 / 書庫を自由に調べられます';
+    if(state.scene==='lane')return state.flags.mantis?'小道の先の灯りを確かめる':'足元の小さな影を調べる';
+    if(state.scene==='gate')return state.flags.doorChecked?'開いた扉から中へ':'倉庫の扉を調べる';
+    if(state.flags.solved)return '棚から現れた本を調べる';
+    if(!state.flags.rescued)return '声のした本を調べる';
+    if(!state.flags.chartFound)return '本の下から出てきた紙を調べる';
+    return '配架表を参考に、窓辺の棚へ本を戻す';
+  }
+  function hotspot(id,label,x,y,handler,kind=''){const b=actionButton(label,handler,`hotspot ${kind}`);b.id=`hotspot-${id}`;b.style.left=`${x}%`;b.style.top=`${y}%`;$('hotspots').append(b);}
+  function renderHotspots(){const host=$('hotspots');host.replaceChildren();if(state.scene==='lane'){
+    if(!state.flags.mantis)hotspot('mantis','足元のカマキリ',53,64,inspectMantis,'new');
+    hotspot('water','水面',30,58,()=>say(GAME_DATA.observations.water));
+    hotspot('back','来た道',15,73,()=>say(GAME_DATA.observations.laneBack),'dim');
+    if(state.flags.mantis)hotspot('path','灯りのほうへ',70,39,goGate,'exit new');
+  }else if(state.scene==='gate'){
+    hotspot('gate-door',state.flags.doorChecked?'中へ入る':'倉庫の扉',50,56,state.flags.doorChecked?enterLibrary:inspectDoor,'new');
+    hotspot('gate-window','灯りのある窓',30,41,()=>say(GAME_DATA.observations.gateWindow));
+    hotspot('sign','扉の横の札',67,52,()=>{addNote('sign','古い書庫の札','扉の横の札は、文字がほとんど消えていた。');say(GAME_DATA.observations.sign);});
+  }else{
+    hotspot('shelf','窓辺の棚',59,49,openShelf,state.flags.chartFound&&!state.flags.solved?'new':'');
+    const desk=GameCore.at(state,'desk').length;hotspot('desk',desk?`机の本 · ${desk}`:'机',68,64,()=>inspectPlace('desk'));
+    const floor=GameCore.at(state,'floor').length;hotspot('floor',floor?`床の本 · ${floor}`:'床',43,75,()=>inspectPlace('floor'),!state.flags.rescued?'new':'');
+    if(state.flags.rescued){
+      hotspot('pugyu','ぷぎゅ',84,74,talkPugyu);
+      if(!state.flags.chartFound)hotspot('paper','紙の端',55,79,discoverChart,'new');
+    }
+    if(state.flags.solved)hotspot('diary',state.flags.diaryRead?'月光観測記':'棚から現れた本',66,72,openDiary,!state.flags.diaryRead?'new':'');
+    hotspot('window','窓',64,19,()=>say(GAME_DATA.observations.libraryWindow));
+    hotspot('door','入口の扉',82,32,()=>say(GAME_DATA.observations.door));
+    hotspot('far','奥の棚',26,36,()=>say(GAME_DATA.observations.farShelf),'dim');
+    hotspot('covered','布のかかった台',94,42,()=>say(GAME_DATA.observations.covered),'dim');
+    const side=GameCore.at(state,'side').length;if(side)hotspot('side',`脇の空き棚 · ${side}`,57,66,()=>inspectPlace('side'));
+  }}
+  function renderInventory(){const host=$('inventory-items');host.replaceChildren();const held=GameCore.at(state,'hand');if(!held.length){const p=document.createElement('span');p.className='inventory-empty';p.textContent=state.scene==='library'?'まだ何も持っていない。気になる本を、手に取ってみよう。':'手元には、まだ何もない。';host.append(p);}for(const id of held){const b=GameCore.book(id),button=actionButton('',()=>{state.selected=id;render();$('inventory-items').querySelector(`[data-book="${id}"]`)?.focus({preventScroll:true});toast(`『${b.title}』を選んだ。棚の空き・床・脇の棚へ置ける。`);},`inventory-book ${state.selected===id?'selected':''}`);button.dataset.book=id;button.setAttribute('aria-pressed',String(state.selected===id));button.setAttribute('aria-label',`『${b.title}』を選択`);button.innerHTML=`<span class="mini-spine" style="--book-color:${b.color}" aria-hidden="true"></span><span>${escapeHTML(b.title)}</span>`;host.append(button);}$('inspect-selected').disabled=!state.selected||!!dialogue;$('clear-selected').disabled=!state.selected||!!dialogue;}
+  function renderShelf(){const host=$('shelf-slots');host.replaceChildren();GameCore.arrangement(state).forEach((id,i)=>{const button=actionButton('',()=>slotClicked(i),`shelf-slot ${id?'occupied':`empty ${state.selected?'placeable':''}`}`);button.dataset.slot=String(i);if(id){const b=GameCore.book(id);button.setAttribute('aria-label',`左から${i+1}番目：${b.title}を調べる`);button.innerHTML=`<span class="book-spine" style="--book-color:${b.color}"><span>${escapeHTML(b.title)}</span><small aria-hidden="true">${b.symbol}</small></span><span class="slot-index">${String(i+1).padStart(2,'0')}</span>`;}else{button.setAttribute('aria-label',`左から${i+1}番目の空き${state.selected?'に選択中の本を置く':'を調べる'}`);button.innerHTML=`<span class="slot-plus" aria-hidden="true">＋</span><span class="slot-hint">${state.selected?'ここに置く':'空いている'}</span><span class="slot-index">${String(i+1).padStart(2,'0')}</span>`;}host.append(button);});
+    $('shelf-selection').textContent=state.selected?`『${bookLabel(state.selected)}』を選択中 — 空いている場所をクリックして置く。`:'手元の本を選んで置く。棚の本は、クリックして手に取れる。';
+    $('arrangement').textContent=state.flags.solved?'棚の奥から、一冊が現れた。':'棚の本も、手に取って置き直せる。';
+    $('toggle-chart').hidden=!state.flags.chartFound;
+    $('toggle-chart').setAttribute('aria-expanded',String(state.flags.chartFound&&state.chartOpen));
+    $('chart-panel').hidden=!(state.flags.chartFound&&state.chartOpen);
+    $('shelf-workspace').classList.toggle('with-chart',state.flags.chartFound&&state.chartOpen);
+    if(state.flags.chartFound)$('chart-panel').innerHTML=chartMarkup()+'<p class="chart-foot">表を開いたまま、本を選んで配置できます。<br>書名と、正面から見た位置を確かめよう。</p>';
+    $('shelf-sigil').toggleAttribute('hidden',!state.flags.solved);
+    $('shelf-diary').hidden=!state.flags.solved;
+    $('shelf-diary').textContent=state.flags.diaryRead?'月光観測記を読む':'棚から現れた本';
+    $('ask-hint').textContent=state.flags.rescued?'ぷぎゅに聞く':'手がかりを考える';
+    for(const [id,loc] of [['put-floor','floor'],['put-side','side']]){const b=$(id);b.classList.toggle('placeable',!!state.selected);b.querySelector('small').textContent=state.selected?'選択中の本を置く':`${GameCore.at(state,loc).length}冊 / 調べる`;}
+  }
+  function render(){
+    GameCore.validate(state);renderArtwork();const scene=GAME_DATA.scenes[state.scene];
+    $('chapter-title').textContent=scene.chapter;$('scene-caption').textContent=scene.caption;$('ambience').textContent=scene.ambience;$('objective').textContent=objective();
+    renderHotspots();renderInventory();renderShelf();
+    const locked=!!dialogue||!$('end-screen').hidden;
+    $('shelf-view').hidden=state.view!=='shelf';$('hotspots').hidden=state.view==='shelf';
+    $('hotspots').inert=locked;$('inventory').inert=locked;$('shelf-view').inert=locked;
+    $('scene-prompt').hidden=locked||state.view==='shelf';
+    $('scene-prompt').textContent=state.scene==='library'?(state.flags.solved?'戻した本の奥に、新しい一冊がある。':state.flags.chartFound?'見つけた配架表を頼りに、本を元の場所へ。':state.flags.rescued?'本をどかしたところに、何かが残っている。':'床に重なった本の下から、小さな声がした。'):state.scene==='gate'?'扉の向こうから、人の返事はない。':state.flags.mantis?'カマキリの影は、小道の先へ消えていった。':'月明かりの下で、小さな影が動いている。';
+  }
+  function say(lines,done=()=>{}){if(dialogue)return;dialogue={lines:lines.map(([speaker,text])=>({speaker,text})),index:0,done};render();$('dialogue').hidden=false;showDialogueLine();$('dialogue-next').focus({preventScroll:true});}
+  function showDialogueLine(){const line=dialogue.lines[dialogue.index];$('speaker').textContent=line.speaker;$('dialogue-text').textContent=line.text;$('dialogue-progress').textContent=`${String(dialogue.index+1).padStart(2,'0')} / ${String(dialogue.lines.length).padStart(2,'0')}`;state.log.push({...line});}
+  function nextDialogue(){if(!dialogue||modal.open)return;dialogue.index++;if(dialogue.index<dialogue.lines.length){showDialogueLine();return;}const done=dialogue.done;dialogue=null;$('dialogue').hidden=true;render();done();if(!dialogue&&!modal.open&&!$('end-screen').hidden){$('explore-after-end').focus({preventScroll:true});}else if(!dialogue&&!modal.open){const target=state.view==='shelf'?$('read-plaque'):$('hotspots').querySelector('.new,button');target?.focus({preventScroll:true});}}
+  function startGame(){pendingDiaryReflection=false;$('shelf-sigil').classList.remove('reacting');closeModal();clearTimeout(toastTimer);$('toast').hidden=true;dialogue=null;state=GameCore.initialState();currentArtwork='';$('title-screen').hidden=true;$('title-screen').inert=true;$('app').hidden=false;$('app').inert=false;$('end-screen').hidden=true;$('dialogue').hidden=true;render();say(GAME_DATA.story.opening);}
+  function inspectMantis(){if(state.flags.mantis)return;say(GAME_DATA.story.mantis,()=>{state.flags.mantis=true;addNote('mantis','小道の影','カマキリの足元に、動く糸のようなものを見た。「ハリガネムシ」という名前を思い出した。そのあと、灯りのほうへ導かれた。');render();});}
+  function goGate(){if(!state.flags.mantis)return;state.scene='gate';render();say(GAME_DATA.story.arriveGate);}
+  function inspectDoor(){say(GAME_DATA.story.door,()=>{state.flags.doorChecked=true;render();});}
+  function enterLibrary(){state.scene='library';render();say(GAME_DATA.story.enter);}
+  function talkPugyu(){
+    if(!state.flags.rescued)return;
+    if(state.flags.finished){say(GAME_DATA.observations.afterEnd);return;}
+    if(state.flags.solved){say([['ぷぎゅ','さっき出てきた本、見てみろよ。']]);return;}
+    showHint();
+  }
+  function chartMarkup(){
+    return `<div class="chart-paper"><div class="eyebrow">FOUND DOCUMENT / 見つけた紙</div><h3>配架表　${escapeHTML(GAME_DATA.shelf.title)}</h3><p>${escapeHTML(GAME_DATA.shelf.chartInstruction)}</p><table class="chart-table" aria-label="窓辺の棚の配架表"><thead><tr>${['一','二','三','四'].map(n=>`<th scope="col">${n}</th>`).join('')}</tr></thead><tbody><tr>${GAME_DATA.shelf.order.map(id=>`<td>${escapeHTML(bookLabel(id))}</td>`).join('')}</tr></tbody></table></div>`;
+  }
+  function discoverChart(){
+    if(!state.flags.rescued||state.flags.chartFound)return;
+    state.flags.chartFound=true;state.chartOpen=true;
+    GAME_DATA.story.chartFound.forEach(([speaker,text])=>state.log.push({speaker,text}));
+    render();
+    openModal('見つけた配架表',chartMarkup()+`<div class="discovery-dialogue">${GAME_DATA.story.chartFound.map(([speaker,text])=>`<p><strong>${escapeHTML(speaker)}</strong>${escapeHTML(text)}</p>`).join('')}</div><p class="small quiet">手帳に挟んだ。棚を開くと、この表を見ながら本を戻せます。</p><div class="modal-actions" id="chart-actions"></div>`);
+    $('chart-actions').append(actionButton('手帳に挟んで戻る',closeModal,'btn primary'));
+  }
+  function toggleChart(){
+    if(!state.flags.chartFound)return;
+    state.chartOpen=!state.chartOpen;render();$('toggle-chart').focus({preventScroll:true});
+  }
+  function openShelf(){
+    if(!state.flags.shelfSeen){state.flags.shelfSeen=true;say(GAME_DATA.story.firstShelf,()=>{state.view='shelf';render();$('shelf-view').scrollTop=0;$('read-plaque').focus({preventScroll:true});});}
+    else{state.view='shelf';render();$('read-plaque').focus({preventScroll:true});}
+  }
+  function readPlaque(){
+    state.flags.plaque=true;addNote('plaque','窓辺の棚札',GAME_DATA.shelf.inscription);
+    openModal('棚札',`<div class="plaque"><h3>${escapeHTML(GAME_DATA.shelf.title)}</h3></div><p class="small quiet" style="margin-top:20px">棚の名前を手帳に書き留めた。</p>`);
+  }
+  function inspectPlace(location){if(state.selected&&['floor','side','desk'].includes(location)){showPlaceChoice(location);return;}const ids=GameCore.at(state,location);if(!ids.length){say(location==='desk'?GAME_DATA.observations.emptyDesk:location==='side'?GAME_DATA.observations.side:GAME_DATA.observations.emptyFloor);return;}if(ids.length===1){showBook(ids[0]);return;}showBookList(location);}
+  function showPlaceChoice(location){openModal(locationLabel(location),`<p class="serif">${escapeHTML(locationLabel(location))}へ、選択中の『${escapeHTML(bookLabel(state.selected))}』を置ける。</p><div id="place-actions" class="modal-actions"></div>`);$('place-actions').append(actionButton('選択中の本を置く',()=>{const id=state.selected;closeModal();placeBook(id,location);},'btn primary'));if(GameCore.at(state,location).length)$('place-actions').append(actionButton('ここにある本を調べる',()=>showBookList(location)));}
+  function showBookList(location){const ids=GameCore.at(state,location);openModal(`${locationLabel(location)}にある本`,`<p class="quiet small">気になる本を選ぶと、表紙や中の文章を確認できます。</p><div class="book-list" id="book-list"></div>`);if(!ids.length){$('book-list').textContent='ここには、今は本がない。';return;}for(const id of ids){const b=GameCore.book(id),button=actionButton('',()=>showBook(id));button.dataset.openBook=id;button.innerHTML=`<span class="mini-spine" style="--book-color:${b.color}"></span><span><strong>${escapeHTML(b.title)}</strong><small>${state.read.includes(id)?'本文を確認済み':'まだ中を読んでいない'}</small></span>`;$('book-list').append(button);}}
+  function showBook(id){const b=GameCore.book(id);if(!b)return;const read=state.read.includes(id);
+    openModal(`本を調べる / ${b.title}`,`<div class="book-detail"><div class="book-cover" style="--book-color:${b.color}" aria-hidden="true"><span class="cover-name">${escapeHTML(b.title)}</span><span class="cover-symbol">${b.symbol}</span></div><div><p class="book-meta">${escapeHTML(locationLabel(state.locations[id]))} ${read?' · 本文を確認済み':''}</p><p class="book-description">${escapeHTML(b.description).replace(/\n/g,'<br>')}</p><div id="book-read-action"></div></div></div><section id="book-pages" class="book-pages" ${read?'':'hidden'}><div class="eyebrow">PAGES / 本文</div>${b.pages.map(p=>`<p>${escapeHTML(p)}</p>`).join('')}</section><div class="modal-actions" id="book-actions"></div>`);
+    if(!read){$('book-read-action').append(actionButton('開いて読む',()=>{GameCore.markRead(state,id);addNote(`book-${id}`,`『${b.title}』の観察`,b.note);$('book-pages').hidden=false;$('book-read-action').innerHTML='<span class="quiet small">見たことを手帳に書き留めた。</span>';},'btn'));}
+    const held=state.locations[id]==='hand';
+    const pick=actionButton(held?'この本を選んで戻る':'手に取る',()=>{
+      const result=GameCore.pick(state,id);
+      if(!result.ok){toast('この本を手に取れませんでした。');return;}
+      closeModal();render();
+      $('inventory-items').querySelector(`[data-book="${id}"]`)?.focus({preventScroll:true});
+      toast(`『${b.title}』を手元で選択した。`);
+      afterBookMove(result);
+    },'btn primary');pick.id='pick-book';$('book-actions').append(pick);
+  }
+  function placeBook(id,location){
+    if(!id){toast('まず手元の本をひとつ選んでください。');return;}
+    const result=GameCore.move(state,id,location);
+    if(!result.ok){toast(result.reason==='occupied'?'ここには別の本がある。先にその本を手に取ろう。':'その場所には置けません。');return;}
+    render();
+    if(state.view==='shelf'){
+      const target=location.startsWith('shelf:')?$('shelf-slots').querySelector(`[data-slot="${location.split(':')[1]}"]`):$(location==='floor'?'put-floor':'put-side');
+      target?.focus({preventScroll:true});
+    }
+    toast(`『${bookLabel(id)}』を${locationLabel(location)}に置いた。`);
+    afterBookMove(result);
+  }
+  function afterBookMove(result){
+    if(result.rescued){
+      addNote('pugyu','本の下の生き物','本をどかすと、見たことのない生き物が現れた。「助かったぜ」と言い、片づけを手伝うつもりらしい。');
+      // A rescue remains visible even if the book was first picked from the shelf view.
+      state.view='room';render();say(GAME_DATA.story.rescue,reactToShelf);
+    }else{reactToShelf();}
+  }
+  function reactToShelf(){
+    if(!GameCore.activateShelf(state))return;
+    // Commit once before dialogue; reading books or finding the chart is not a gate.
+    addNote('shelf-opened','棚の仕掛け','本を所定の位置へ戻すと、棚に淡い線が浮かんだ。奥から、薄い一冊が現れた。');
+    state.view='shelf';render();$('shelf-view').scrollTop=0;
+    $('shelf-sigil').classList.add('reacting');
+    say(GAME_DATA.story.completion,()=>{$('shelf-sigil').classList.remove('reacting');render();$('shelf-diary').focus({preventScroll:true});});
+  }
+  function slotClicked(index){const location=`shelf:${index}`,id=GameCore.at(state,location)[0];if(id){if(state.selected)toast('この場所には本がある。先に手に取って場所を空けられる。');showBook(id);}else if(state.selected){placeBook(state.selected,location);}else{toast('手元の本を選ぶと、ここへ置けます。');}}
+  function restingClicked(location){if(state.selected){placeBook(state.selected,location);}else if(GameCore.at(state,location).length){showBookList(location);}else{toast(location==='floor'?'本は、床にも置ける。手元から本を選んでみよう。':'ここは空いている。順番を考えるあいだ、本を置いておける。');}}
+  function openDiary(){
+    if(!state.flags.solved)return;
+    const diary=GAME_DATA.diary;
+    openModal(`棚から現れた本 / ${diary.title}`,`<div class="book-detail"><div class="book-cover diary-cover" aria-hidden="true"><span class="cover-name">${escapeHTML(diary.title)}</span><span class="cover-symbol">☾</span></div><div><p class="book-meta">窓辺の棚の奥から現れた一冊</p><p class="book-description">${escapeHTML(diary.description).replace(/\n/g,'<br>')}</p><div id="diary-read-action"></div></div></div><section class="book-pages diary-pages" id="diary-pages" ${state.flags.diaryRead?'':'hidden'}><div class="eyebrow">月光観測記 / 最初の一頁</div><p>${escapeHTML(diary.page)}</p></section><p class="diary-hint" id="diary-hint" ${state.flags.diaryRead?'':'hidden'}>読み終えたら、本を閉じる。</p><div class="modal-actions" id="diary-actions"></div>`);
+    if(!state.flags.diaryRead){
+      const read=actionButton('開いて読む',()=>{
+        state.flags.diaryRead=true;pendingDiaryReflection=!state.flags.finished;
+        $('diary-pages').hidden=false;$('diary-hint').hidden=false;
+        $('diary-read-action').innerHTML='<span class="quiet small">おじさんの字だ。記録を手帳にも残した。</span>';
+        $('diary-close').textContent='本を閉じる';
+        $('diary-pages').scrollIntoView({block:'nearest',behavior:'instant'});
+        $('diary-close').focus({preventScroll:true});
+      },'btn');read.id='read-diary';$('diary-read-action').append(read);
+    }
+    const close=actionButton(state.flags.diaryRead?'本を閉じる':'いったん閉じる',closeModal,'btn primary');close.id='diary-close';$('diary-actions').append(close);
+  }
+  function showHint(){
+    let text;
+    if(!state.flags.rescued)text='さっきの声は、床にある本の下から聞こえた。\n本を調べて、手に取ってみよう。';
+    else if(!state.flags.chartFound)text='足元の紙、読んだか？ 本に埋もれる前にな。';
+    else if(!state.flags.shelfSeen)text='「窓辺の棚」って書いてある。まずは、その棚だな。';
+    else if(state.flags.solved)text=state.flags.diaryRead?'まだ本は山ほどあるな。':'さっき出てきた本、見てみろよ。';
+    else text='正面から見て左から、だってさ。表と見比べてみろよ。';
+    openModal(state.flags.rescued?'ぷぎゅに聞く':'手がかりを考える',`<div class="hint-box"><p>${escapeHTML(text).replace(/\n/g,'<br>')}</p></div><p class="small quiet">ヒントは、自分で開いたときだけ表示されます。本は自動では動きません。</p><div id="hint-actions" class="modal-actions"></div>`);
+    if(state.flags.rescued&&!state.flags.solved)$('hint-actions').append(actionButton('置き直し方を聞く',()=>{
+      openModal('ぷぎゅに聞く',`<div class="hint-box"><p>先にある本をどかせばいいだろ。床も空いてるぜ。</p></div><p class="small quiet">棚の本をクリックして「手に取る」。手元の本を選び、床・脇の棚・空いている位置へ置けます。</p>`);
+    }));
+    $('hint-actions').append(actionButton('戻る',closeModal,'btn primary'));
+  }
+  function showNotes(){
+    const chart=state.flags.chartFound?`<section class="notebook-entry">${chartMarkup()}</section>`:'';
+    const diary=state.flags.diaryRead?`<section class="notebook-entry"><h3>『${escapeHTML(GAME_DATA.diary.title)}』の最初の一頁</h3><p>${escapeHTML(GAME_DATA.diary.page)}</p></section>`:'';
+    openModal('手帳',`<p class="small quiet">見たものと、読んだ言葉。未発見の資料は記録されません。</p>${chart}${diary}${state.notes.map(n=>`<section class="notebook-entry"><h3>${escapeHTML(n.title)}</h3><p>${escapeHTML(n.text)}</p></section>`).join('')}${!chart&&!diary&&!state.notes.length?'<p class="serif quiet">まだ、何も書いていない。</p>':''}`);
+  }
+  function showBacklog(){openModal('会話録',state.log.length?state.log.map(n=>`<div class="backlog-item"><strong>${escapeHTML(n.speaker)}</strong><p>${escapeHTML(n.text)}</p></div>`).join(''):'<p class="quiet">まだ会話はありません。</p>');modal.scrollTop=modal.scrollHeight;}
+  function showHelp(){openModal('遊び方',`<h3>物語と探索</h3><p>会話欄をクリック、または <span class="key">Space</span> / <span class="key">Enter</span> で読み進めます。会話が終わると、画面の小さな札をクリックして調べられます。</p><h3>本を読む・移動する</h3><p>本を調べると、表紙を見たり「開いて読む」で本文を確認したりできます。「手に取る」で手元へ。本を選び、空いた棚・床・脇の空き棚をクリックすると置けます。棚にある本も動かせます。</p><p>間違った場所にも置けます。置き直しに罰はなく、床や手元の本の数に制限はありません。</p><h3>見つけたものを参考にする</h3><p>片づけて見つけた資料は「手帳」に残ります。配架表を見つけたら、棚の「配架表」で開閉できます。表を見たまま本を選び、配置してください。本文の読了は配架の条件ではありません。</p><p>「会話録」では会話を読み返せます。操作に迷ったときは、棚のヒントを使ってください。</p><h3>補助操作</h3><p><span class="key">Esc</span> で詳細を閉じます。詳細がないときは、本の選択解除 → 棚から部屋へ、の順に戻れます。<span class="key">Tab</span> でボタンを選び、<span class="key">Enter</span> で操作できます。</p><p class="small quiet">セーブ・音声・制限時間はありません。再読み込みや「はじめから」で進行はリセットされます。原脚本と承認済みの再設計を用いた、仮稿を含むプロトタイプです。</p>`);}
+  function requestTitle(){openModal('表紙に戻る',`<p>今回の進行をリセットして、タイトル画面に戻ります。</p><div class="modal-actions" id="title-confirm"></div>`);$('title-confirm').append(actionButton('遊び続ける',closeModal,'btn primary'),actionButton('表紙に戻る',()=>{pendingDiaryReflection=false;closeModal();dialogue=null;state=GameCore.initialState();$('app').hidden=true;$('app').inert=true;$('title-screen').hidden=false;$('title-screen').inert=false;$('dialogue').hidden=true;clearTimeout(toastTimer);$('toast').hidden=true;$('start-game').focus();}));}
+  $('start-game').addEventListener('click',startGame);$('title-help').addEventListener('click',showHelp);$('dialogue-next').addEventListener('click',nextDialogue);$('open-help').addEventListener('click',showHelp);$('open-notes').addEventListener('click',showNotes);$('open-backlog').addEventListener('click',showBacklog);$('back-title').addEventListener('click',requestTitle);$('read-plaque').addEventListener('click',readPlaque);$('ask-hint').addEventListener('click',showHint);$('toggle-chart').addEventListener('click',toggleChart);$('shelf-diary').addEventListener('click',openDiary);$('leave-shelf').addEventListener('click',()=>{state.view='room';render();$('hotspot-shelf')?.focus({preventScroll:true});});$('put-floor').addEventListener('click',()=>restingClicked('floor'));$('put-side').addEventListener('click',()=>restingClicked('side'));$('inspect-selected').addEventListener('click',()=>{if(state.selected)showBook(state.selected);});$('clear-selected').addEventListener('click',()=>{state.selected=null;render();});$('explore-after-end').addEventListener('click',()=>{$('end-screen').hidden=true;render();$('hotspot-shelf')?.focus();});$('replay').addEventListener('click',startGame);
+  document.addEventListener('keydown',event=>{if(modal.open||event.repeat||event.ctrlKey||event.altKey||event.metaKey)return;if(!$('title-screen').hidden||!$('end-screen').hidden)return;
+    if(dialogue&&(event.code==='Space'||event.key==='Enter')){const target=event.target;if(target instanceof Element&&target.closest('button')?.id!=='dialogue-next'&&target.closest('button'))return;event.preventDefault();nextDialogue();return;}
+    if(event.key==='Escape'&&!dialogue){event.preventDefault();if(state.selected){state.selected=null;render();}else if(state.view==='shelf'){state.view='room';render();$('hotspot-shelf')?.focus({preventScroll:true});}}
+  });
+  $('title-art').innerHTML=librarySVG(true);
+  // Optional read-only inspection for a local developer: ?dev=1. No skip or auto-solve.
+  if(new URLSearchParams(location.search).get('dev')==='1')Object.defineProperty(window,'gekkouDebug',{value:Object.freeze({snapshot:()=>JSON.parse(JSON.stringify(state)),validate:()=>GameCore.validate(state),version:GAME_DATA.version})});
+})();
+</script>
+</body>
+</html>
